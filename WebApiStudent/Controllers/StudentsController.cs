@@ -8,7 +8,7 @@ using WebApiStudent.Models;
 
 namespace WebApiStudent.Controllers
 {
-    [RoutePrefix("api/students")]
+    [RoutePrefix("api/students")]   //routing prefix
     public class StudentsController : ApiController
     {
         static List<Student> student = new List<Student>()
@@ -18,6 +18,7 @@ namespace WebApiStudent.Controllers
             new Student{id=3,name="Faraz"}
         };
 
+        [Route("")]
         public IEnumerable<Student> Get()
         {
             return student;
@@ -50,6 +51,18 @@ namespace WebApiStudent.Controllers
             {
                 return new List<string> { "Invalid Id given." };
             }
+        }
+
+        [Route("~/api/teachers")]    //overriding routing prefix
+        public IEnumerable<Teacher> GetTechers() 
+        {
+            List<Teacher> teachers = new List<Teacher>()
+            {
+                new Teacher{id=1,name="Rom"},
+                new Teacher{id=2,name="Werry"},
+                new Teacher{id=3,name="SarFaraz"}
+            };
+            return teachers;
         }
     }
 }
